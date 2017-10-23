@@ -4,7 +4,9 @@ Docker for Mac で Ruby on Rails アプリの開発環境
 ```
 mkdir ~/MyDocker/MyRails
 cd ~/MyDocker/MyRails
+git clone https://github.com/nuovotaka/docker-rails.git
 ```
+docker-rails ディレクトリ内のファイル群をRailsアプリ用のディレクトリ内にコピーする。
 
 ## コンテナにRailsアプリを作成
 「docker-compose run」コマンドで「web」コンテナに「rails new」を行う。
