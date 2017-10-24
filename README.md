@@ -38,7 +38,7 @@ config/database.yml内の記述を下記のように変更する
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS")  { 5 } %>
   username: root
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: db
