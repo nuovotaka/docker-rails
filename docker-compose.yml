@@ -3,21 +3,15 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql
-    env_file:
-      - ./docker/mysql/password.env
+      - ./data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
   web:
-    build:
-      context: .
-      dockerfile: ./docker/rails/Dockerfile
+    build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/myapp
+      - .:/MyRails
     ports:
       - "3000:3000"
-    environment:
-      RAILS_ENV: development
-    env_file:
-      - ./docker/mysql/password.env
     depends_on:
       - db
