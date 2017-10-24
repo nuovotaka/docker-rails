@@ -16,7 +16,7 @@ cd docker-rails
 
 「docker-compose run」コマンドで「web」コンテナに「rails new」を行う。
 ```
-$ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle
+docker-compose run --rm web rails new . --force --database=mysql --skip-bundle
 ```
 実行後、ディレクトリの中にRailsのファイル群が作成されている
 
