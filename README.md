@@ -11,7 +11,7 @@ docker-rails ディレクトリ内のファイル群をRailsアプリ用のデ�
 ## コンテナにRailsアプリを作成
 「docker-compose run」コマンドで「web」コンテナに「rails new」を行う。
 ```
-$ docker-compose run web rails new . --force --database=mysql --skip-bundle
+$ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle
 ```
 実行後、app_nameディレクトリの中にRailsのファイル群が作成されている
 
@@ -32,7 +32,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: password
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: db
 
 ```
@@ -40,7 +40,7 @@ default: &default
 ## コンテナの実行＆ブラウザの確認
 最初はデータベースを作成する（次回からは必要ない）
 ```
-docker-compose run web rake db:create
+docker-compose run --rm web rake db:create
 ```
 
 ### コンテナの実行
