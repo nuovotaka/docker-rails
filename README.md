@@ -30,7 +30,10 @@ Gemfileの変更を適用するためには以下のコマンドを実行
 ```
 docker-compose build
 ```
-
+## unicorn.rbをconfig/以下へ設置
+```
+cp docker/rails/unicorn.rb config/
+```
 ## config/database.ymlの設定
 
 config/database.yml内の記述を下記のように変更する
