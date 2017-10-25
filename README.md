@@ -8,8 +8,8 @@ cd work
 ```
 githubからクローンしてくる
 ```
-git clone https://github.com/nuovotaka/docker-rails.git
-cd docker-rails
+git clone https://github.com/nuovotaka/docker-rails2.git
+cd docker-rails2
 ```
 
 ## コンテナにRailsアプリを作成
