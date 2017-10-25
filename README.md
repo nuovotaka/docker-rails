@@ -22,9 +22,9 @@ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle
 
 ## Gemfileの変更
 
-therubyracerの行のコメントを外す
+以下の行を追加
 ```
-gem 'therubyracer', platforms: :ruby
+gem 'unicorn'
 ```
 Gemfileの変更を適用するためには以下のコマンドを実行
 ```
