@@ -1,23 +1,46 @@
 version: '2'
 services:
+  datastore:
+    image: busybox
+    volumes:
+      - /share
+      - ./docker/mysql/volumes:/var/lib/mysql
+  server:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - '80:80'
+    volumes_from:
+      - datastore
+    depends_on:
+      - datastore
   db:
     image: mysql:5.7
     ports:
       - "3306:3306"
-    volumes:
-      - ./data/db:/var/lib/mysql
+    volumes_from:
+      - datastore
+    depends_on:
+      - datastore
     env_file: ./docker/mysql/password.env
   web:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
     ports:
       - "3000:3000"
     volumes:
-      - .:/myapp
+      - .:/app
+    volumes_from:
+      - datastore
     environment:
       RAILS_ENV: development
-    env_file: ./docker/mysql/password.env
     depends_on:
       - db
+    links:
+      - db
+      - db:database
+      - db:mysql
+    env_file: ./docker/mysql/password.env
