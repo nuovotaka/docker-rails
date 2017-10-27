@@ -106,3 +106,6 @@ rm -rf tmp/pids/server.pid
 ```
 docker-compose up
 ```
+
+## mysqlへの接続
+[Sequel Pro](https://www.sequelpro.com/)を使ってデータベースを確認(Mac)
