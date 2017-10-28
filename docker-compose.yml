@@ -28,7 +28,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
-    command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
+    command: bundle exec unicorn -p 3000 -c /myapp/config/unicorn.rb
     ports:
       - "3000:3000"
     volumes:
