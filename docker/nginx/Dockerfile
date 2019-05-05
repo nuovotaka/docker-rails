@@ -5,5 +5,5 @@ RUN apt-get update && \
     echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
-ADD ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
-ADD ./docker/nginx/rails.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx/rails.conf /etc/nginx/conf.d/default.conf
